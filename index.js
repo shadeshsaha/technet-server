@@ -9,8 +9,7 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-const MONGODB_URI =
-  "mongodb+srv://Tech-Net:EFh2XsCGp0gHR0Zu@cluster0.hplqh.mongodb.net/Tech-Net?retryWrites=true&w=majority";
+const MONGODB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.hplqh.mongodb.net/Tech-Net?retryWrites=true&w=majority`;
 
 // const client = new MongoClient(process.env.MONGODB_URI, {
 const client = new MongoClient(MONGODB_URI, {
@@ -110,7 +109,7 @@ const run = async () => {
 run().catch((err) => console.log(err));
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello From Tech Net Server!");
 });
 
 app.listen(port, () => {
